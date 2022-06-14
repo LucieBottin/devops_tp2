@@ -9,11 +9,9 @@ const API_KEY = process.argv[2];
 app.get('/', function (req, res, next) {
     const lat = "5.902785";
     const lon = "102.754175";
-    //http://api.openweathermap.org/data/2.5/weather?lat=$LAT&lon=$LONG&appid=$API_KEY
     axios
         .get("http://api.openweathermap.org/data/2.5/weather", { params: { lat: lat, lon: lon, appid: API_KEY } })
         .then(response => {
-            console.log(lat, lon, API_KEY);
             res.send(response.data)
         })
         .catch(err => {
